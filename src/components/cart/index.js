@@ -2,7 +2,6 @@ import React from "react";
 import './style.css';
 import PropTypes from 'prop-types';
 import Item from "../item";
-import List from "../list";
 
 function Cart({ onClose, cartItems, setCartItems, totalPrice }){
 
