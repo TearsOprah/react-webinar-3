@@ -36,18 +36,6 @@ function App({store}) {
   }
 
   const callbacks = {
-    onDeleteItem: useCallback((code) => {
-      store.deleteItem(code);
-    }, [store]),
-
-    onSelectItem: useCallback((code) => {
-      store.selectItem(code);
-    }, [store]),
-
-    onAddItem: useCallback(() => {
-      store.addItem();
-    }, [store]),
-
     onOpenCart: useCallback(() => {
       setShowCart(true);
     }, [])

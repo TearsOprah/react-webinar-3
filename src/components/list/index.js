@@ -11,7 +11,8 @@ function List({ list, cartItems, setCartItems }){
         <div key={item.code} className='List-item'>
           <Item item={item}
                 cartItems={cartItems}
-                setCartItems={setCartItems} />
+                setCartItems={setCartItems}
+                showAddButton={true} />
         </div>
       )}
     </div>

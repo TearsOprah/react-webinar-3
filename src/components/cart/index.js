@@ -1,13 +1,10 @@
 import React from "react";
 import './style.css';
 import PropTypes from 'prop-types';
+import Item from "../item";
+import List from "../list";
 
 function Cart({ onClose, cartItems, setCartItems, totalPrice }){
-
-  const handleDelete = (code) => {
-    const updatedCartItems = cartItems.filter(item => item.code !== code);
-    setCartItems(updatedCartItems);
-  }
 
   const handleBackdropClick = (event) => {
     // закрыть попап только при клике на фоновую область
@@ -26,19 +23,16 @@ function Cart({ onClose, cartItems, setCartItems, totalPrice }){
         </div>
 
         {cartItems.length !== 0 ?
+
           <div className='List'>{
             cartItems.map(item =>
               <div key={item.code} className='List-item'>
 
-                <div className={'Item'}>
-                  <div className='Item-code'>{item.code}</div>
-                  <div className='Item-title'>{item.title}</div>
-                  <div className='Item-price'>{`${item.price.toLocaleString()} ₽`}</div>
-                  <div className='Item-price'>{`${item.count} шт`}</div>
-                  <div className='Item-actions'>
-                    <button onClick={() => handleDelete(item.code)}>Удалить</button>
-                  </div>
-                </div>
+                <Item item={item}
+                      cartItems={cartItems}
+                      setCartItems={setCartItems}
+                      showDeleteButton={true}
+                      showCount={true} />
 
               </div>
             )}

@@ -4,6 +4,11 @@ import './style.css';
 
 function Item(props){
 
+  const handleDelete = (code) => {
+    const updatedCartItems = props.cartItems.filter(item => item.code !== code);
+    props.setCartItems(updatedCartItems);
+  }
+
   const handleAddToCart = () => {
     // ищем товар с тем же кодом
     const existingItem = props.cartItems.find(item => item.code === props.item.code);
@@ -29,8 +34,16 @@ function Item(props){
       <div className='Item-code'>{props.item.code}</div>
       <div className='Item-title'>{props.item.title}</div>
       <div className='Item-price'>{`${props.item.price.toLocaleString()} ₽`}</div>
+      {props.showCount && (
+        <div className='Item-price'>{`${props.item.count} шт`}</div>
+      )}
       <div className='Item-actions'>
-        <button onClick={handleAddToCart}>Добавить</button>
+        {props.showAddButton && (
+          <button onClick={handleAddToCart}>Добавить</button>
+        )}
+        {props.showDeleteButton && (
+          <button onClick={() => handleDelete(props.item.code)}>Удалить</button>
+        )}
       </div>
     </div>
   );
