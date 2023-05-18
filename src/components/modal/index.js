@@ -20,16 +20,11 @@ function Modal({ onClose, children }){
 
 Modal.propTypes = {
   onClose: PropTypes.func,
-  cartItems: PropTypes.array,
-  setCartItems: PropTypes.func,
-  totalPrice: PropTypes.number
+  children: PropTypes.node
 };
 
 Modal.defaultProps = {
   onClose: () => {},
-  cartItems: [],
-  setCartItems: () => {},
-  totalPrice: 0
 };
 
 export default Modal;

@@ -32,6 +32,7 @@ function App({store}) {
                 totalPrice={totalPrice} />
       <List list={list}
             cartItems={cartItems}
+            showAddButton={true}
             store={store} />
       {showCart && (
         <Modal onClose={() => setShowCart(false)}>
@@ -40,10 +41,6 @@ function App({store}) {
                 totalPrice={totalPrice}
                 store={store}/>
         </Modal>
-        // <Cart onClose={() => setShowCart(false)}
-        //       cartItems={cartItems}
-        //       totalPrice={totalPrice}
-        //       store={store} />
       )}
     </PageLayout>
   );

@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import Item from "../item";
 import './style.css';
 
-function List({ list, cartItems, store }){
+function List({ list,
+                cartItems,
+                store,
+                showAddButton=false,
+                showDeleteButton=false,
+                showCount=false}){
 
   return (
     <div className='List'>{
@@ -11,7 +16,9 @@ function List({ list, cartItems, store }){
         <div key={item.code} className='List-item'>
           <Item item={item}
                 cartItems={cartItems}
-                showAddButton={true}
+                showAddButton={showAddButton}
+                showDeleteButton={showDeleteButton}
+                showCount={showCount}
                 store={store} />
         </div>
       )}

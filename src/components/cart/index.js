@@ -2,6 +2,7 @@ import React from "react";
 import './style.css';
 import PropTypes from 'prop-types';
 import Item from "../item";
+import List from "../list";
 
 function Cart({ onClose, cartItems, totalPrice, store }){
 
@@ -15,19 +16,11 @@ function Cart({ onClose, cartItems, totalPrice, store }){
 
         {cartItems.length !== 0 ?
 
-          <div className='List'>{
-            cartItems.map(item =>
-              <div key={item.code} className='List-item'>
-
-                <Item item={item}
-                      cartItems={cartItems}
-                      showDeleteButton={true}
-                      showCount={true}
-                      store={store} />
-
-              </div>
-            )}
-          </div>
+          <List list={cartItems}
+                cartItems={cartItems}
+                store={store}
+                showDeleteButton={true}
+                showCount={true} />
           :
           <p className={'Cart-message'}>В корзине нет товаров</p>
         }
