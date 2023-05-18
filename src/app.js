@@ -14,27 +14,8 @@ function App({store}) {
 
   const list = store.getState().list;
   const cartItems = store.getState().cartItems;
-
+  const totalPrice = store.getState().totalPrice;
   const [showCart, setShowCart] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  // обновление стоимости при изменении товаров в корзине
-  useEffect(() => {
-    calculateTotalPrice();
-  }, [cartItems]);
-
-  // подсчет итоговой стоимости
-  function calculateTotalPrice() {
-    let totalPrice = 0;
-
-    if (cartItems) {
-      for (const item of cartItems) {
-        totalPrice += item.price * item.count;
-      }
-    }
-
-    setTotalPrice(totalPrice);
-  }
 
   const callbacks = {
     onOpenCart: useCallback(() => {

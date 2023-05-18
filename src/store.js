@@ -5,7 +5,7 @@ import {generateCode} from "./utils";
  */
 class Store {
   constructor(initState = {}) {
-    this.state = { ...initState, cartItems: [] };
+    this.state = { ...initState, cartItems: [], totalPrice: 0 };
     this.listeners = []; // Слушатели изменений состояния
   }
 
@@ -85,6 +85,21 @@ class Store {
   };
 
   /**
+   * Рассчитывает общую стоимость товаров в корзине
+   * @returns {number} - Общая стоимость
+   */
+  calculateTotalPrice() {
+    const { cartItems } = this.state;
+    let totalPrice = 0;
+
+    for (const item of cartItems) {
+      totalPrice += item.price * item.count;
+    }
+
+    return totalPrice;
+  }
+
+  /**
    * Добавление товара в корзину
    * @param item {Object} - добавляемый товар
    */
@@ -109,6 +124,10 @@ class Store {
 
     // Обновляем состояние с новым массивом cartItems
     this.setState({ ...this.state, cartItems });
+
+    // Обновляем состояние totalPrice
+    const totalPrice = this.calculateTotalPrice();
+    this.setState({ ...this.state, totalPrice });
   }
 
 
@@ -124,6 +143,10 @@ class Store {
       ...this.state,
       cartItems: updatedCartItems
     });
+
+    // Обновляем состояние totalPrice
+    const totalPrice = this.calculateTotalPrice();
+    this.setState({ ...this.state, totalPrice });
   };
 
 }
