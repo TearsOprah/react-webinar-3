@@ -2,4 +2,22 @@
   display: flex;
   justify-content: flex-end;
   padding: 20px;
+  max-height: 63px;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.Controls-info {
+  display: flex;
+  gap: 15px;
+  margin-right: 20px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.Controls-button {
+  padding-left: 9px;
+  padding-right: 9px;
 }

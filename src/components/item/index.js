@@ -17,7 +17,8 @@ function Item(props){
       const newItem = {
         code: props.item.code,
         title: props.item.title,
-        count: 1
+        count: 1,
+        price: props.item.price
       };
       props.setCartItems([...props.cartItems, newItem]);
     }
