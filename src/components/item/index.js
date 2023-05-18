@@ -5,12 +5,23 @@ import './style.css';
 function Item(props){
 
   const handleAddToCart = () => {
-    const newItem = {
-      code: props.item.code,
-      title: props.item.title,
-    };
-    props.setCartItems([...props.cartItems, newItem]);
-  }
+    // ищем товар с тем же кодом
+    const existingItem = props.cartItems.find(item => item.code === props.item.code);
+
+    // если товар уже существует, то увеличим кол-во на 1
+    if (existingItem) {
+      existingItem.count++;
+      props.setCartItems([...props.cartItems]);
+    } else {
+      // иначе создаем новый с кол-вом 1
+      const newItem = {
+        code: props.item.code,
+        title: props.item.title,
+        count: 1
+      };
+      props.setCartItems([...props.cartItems, newItem]);
+    }
+  };
 
   return (
     <div className={'Item'}>

@@ -20,6 +20,7 @@ function Cart({ onClose, cartItems, setCartItems }){
               <div className={'Item'}>
                 <div className='Item-code'>{item.code}</div>
                 <div className='Item-title'>{item.title}</div>
+                <div>{item.count}</div>
                 <div className='Item-actions'>
                   <button onClick={() => handleDelete(item.code)}>Удалить</button>
                 </div>
