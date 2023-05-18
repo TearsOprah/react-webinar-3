@@ -5,17 +5,9 @@ import Item from "../item";
 
 function Cart({ onClose, cartItems, totalPrice, store }){
 
-  const handleBackdropClick = (event) => {
-    // закрыть попап только при клике на фоновую область
-    if (event.target.classList.contains('Cart')) {
-      onClose();
-    }
-  };
-
   return (
-    <div className='Cart' onClick={handleBackdropClick}>
-      <div className='Cart-content'>
 
+      <div className='Cart'>
         <div className='Cart-header'>
           <h2 className='Cart-title'>Корзина</h2>
           <button className='Cart-button' onClick={() => onClose()}>Закрыть</button>
@@ -36,18 +28,16 @@ function Cart({ onClose, cartItems, totalPrice, store }){
               </div>
             )}
           </div>
-        :
+          :
           <p className={'Cart-message'}>В корзине нет товаров</p>
         }
-
 
         <div className='Cart-price'>
           <p>Итого</p>
           {`${totalPrice.toLocaleString()} ₽`}
         </div>
-
       </div>
-    </div>
+
   )
 }
 

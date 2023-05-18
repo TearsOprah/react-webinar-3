@@ -4,6 +4,7 @@ import Controls from "./components/controls";
 import Head from "./components/head";
 import PageLayout from "./components/page-layout";
 import Cart from "./components/cart";
+import Modal from "./components/modal";
 
 /**
  * Приложение
@@ -21,7 +22,6 @@ function App({store}) {
     onOpenCart: useCallback(() => {
       setShowCart(true);
     }, [])
-
   }
 
   return (
@@ -34,10 +34,16 @@ function App({store}) {
             cartItems={cartItems}
             store={store} />
       {showCart && (
-        <Cart onClose={() => setShowCart(false)}
-              cartItems={cartItems}
-              totalPrice={totalPrice}
-              store={store} />
+        <Modal onClose={() => setShowCart(false)}>
+          <Cart onClose={() => setShowCart(false)}
+                cartItems={cartItems}
+                totalPrice={totalPrice}
+                store={store}/>
+        </Modal>
+        // <Cart onClose={() => setShowCart(false)}
+        //       cartItems={cartItems}
+        //       totalPrice={totalPrice}
+        //       store={store} />
       )}
     </PageLayout>
   );
