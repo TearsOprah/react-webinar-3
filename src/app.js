@@ -13,8 +13,9 @@ import Cart from "./components/cart";
 function App({store}) {
 
   const list = store.getState().list;
+  const cartItems = store.getState().cartItems;
+
   const [showCart, setShowCart] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
   // обновление стоимости при изменении товаров в корзине
@@ -50,12 +51,12 @@ function App({store}) {
                 totalPrice={totalPrice} />
       <List list={list}
             cartItems={cartItems}
-            setCartItems={setCartItems} />
+            store={store} />
       {showCart && (
         <Cart onClose={() => setShowCart(false)}
               cartItems={cartItems}
-              setCartItems={setCartItems}
-              totalPrice={totalPrice} />
+              totalPrice={totalPrice}
+              store={store} />
       )}
     </PageLayout>
   );

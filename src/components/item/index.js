@@ -5,28 +5,11 @@ import './style.css';
 function Item(props){
 
   const handleDelete = (code) => {
-    const updatedCartItems = props.cartItems.filter(item => item.code !== code);
-    props.setCartItems(updatedCartItems);
+    props.store.removeFromCart(code);
   }
 
   const handleAddToCart = () => {
-    // ищем товар с тем же кодом
-    const existingItem = props.cartItems.find(item => item.code === props.item.code);
-
-    // если товар уже существует, то увеличим кол-во на 1
-    if (existingItem) {
-      existingItem.count++;
-      props.setCartItems([...props.cartItems]);
-    } else {
-      // иначе создаем новый с кол-вом 1
-      const newItem = {
-        code: props.item.code,
-        title: props.item.title,
-        count: 1,
-        price: props.item.price
-      };
-      props.setCartItems([...props.cartItems, newItem]);
-    }
+    props.store.addToCart(props.item);
   };
 
   return (

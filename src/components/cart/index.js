@@ -3,7 +3,7 @@ import './style.css';
 import PropTypes from 'prop-types';
 import Item from "../item";
 
-function Cart({ onClose, cartItems, setCartItems, totalPrice }){
+function Cart({ onClose, cartItems, totalPrice, store }){
 
   const handleBackdropClick = (event) => {
     // закрыть попап только при клике на фоновую область
@@ -29,9 +29,9 @@ function Cart({ onClose, cartItems, setCartItems, totalPrice }){
 
                 <Item item={item}
                       cartItems={cartItems}
-                      setCartItems={setCartItems}
                       showDeleteButton={true}
-                      showCount={true} />
+                      showCount={true}
+                      store={store} />
 
               </div>
             )}

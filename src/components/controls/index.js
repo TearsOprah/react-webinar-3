@@ -9,7 +9,7 @@ function Controls({ onOpenCart, cartItems, totalPrice }){
     <div className='Controls'>
       <div className='Controls-info'>
         <p>{`В корзине: `}</p>
-        <p className='bold-text'>{`${cartItems.length} ${plural(cartItems.length, {one: 'товар', few: 'товара', many: 'товаров'})} / ${totalPrice} ₽`}</p>
+        {cartItems.length === 0 ? <p className='bold-text'>пусто</p> : <p className='bold-text'>{`${cartItems.length} ${plural(cartItems.length, {one: 'товар', few: 'товара', many: 'товаров'})} / ${totalPrice.toLocaleString()} ₽`}</p>}
       </div>
       <button className='Controls-button' onClick={() => onOpenCart()}>Перейти</button>
     </div>

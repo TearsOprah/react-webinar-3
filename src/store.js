@@ -5,7 +5,7 @@ import {generateCode} from "./utils";
  */
 class Store {
   constructor(initState = {}) {
-    this.state = initState;
+    this.state = { ...initState, cartItems: [] };
     this.listeners = []; // Слушатели изменений состояния
   }
 
@@ -82,7 +82,50 @@ class Store {
         return item.selected ? {...item, selected: false} : item;
       })
     })
+  };
+
+  /**
+   * Добавление товара в корзину
+   * @param item {Object} - добавляемый товар
+   */
+  addToCart(item) {
+    const cartItems = [...this.state.cartItems]; // Создаем новый массив
+
+    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.code === item.code);
+
+    if (existingItemIndex !== -1) {
+      // Если товар уже существует в корзине, увеличиваем его количество
+      cartItems[existingItemIndex].count++;
+    } else {
+      // Иначе, добавляем новый товар в корзину
+      const newItem = {
+        code: item.code,
+        title: item.title,
+        count: 1,
+        price: item.price
+      };
+      cartItems.push(newItem);
+    }
+
+    // Обновляем состояние с новым массивом cartItems
+    this.setState({ ...this.state, cartItems });
   }
+
+
+  /**
+   * Удаление товара из корзины по коду
+   * @param code {string} - код удаляемого товара
+   */
+  removeFromCart(code) {
+    const { cartItems } = this.state;
+    const updatedCartItems = cartItems.filter((item) => item.code !== code);
+
+    this.setState({
+      ...this.state,
+      cartItems: updatedCartItems
+    });
+  };
+
 }
 
 export default Store;

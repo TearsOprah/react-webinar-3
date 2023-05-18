@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Item from "../item";
 import './style.css';
 
-function List({ list, cartItems, setCartItems }){
+function List({ list, cartItems, store }){
 
   return (
     <div className='List'>{
@@ -11,8 +11,8 @@ function List({ list, cartItems, setCartItems }){
         <div key={item.code} className='List-item'>
           <Item item={item}
                 cartItems={cartItems}
-                setCartItems={setCartItems}
-                showAddButton={true} />
+                showAddButton={true}
+                store={store} />
         </div>
       )}
     </div>
@@ -24,7 +24,6 @@ List.propTypes = {
     code: PropTypes.number
   })).isRequired,
   cartItems: PropTypes.array.isRequired,
-  setCartItems: PropTypes.func.isRequired
 };
 
 export default React.memo(List);
