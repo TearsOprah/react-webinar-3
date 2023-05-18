@@ -66,7 +66,8 @@ function App({store}) {
       {showCart && (
         <Cart onClose={() => setShowCart(false)}
               cartItems={cartItems}
-              setCartItems={setCartItems} />
+              setCartItems={setCartItems}
+              totalPrice={totalPrice} />
       )}
     </PageLayout>
   );

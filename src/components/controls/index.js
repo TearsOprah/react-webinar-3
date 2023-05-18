@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import './style.css';
-import {useEffect, useState} from "react";
 import {plural} from "../../utils";
 
-function Controls({ onOpenCart, cartItems, totalPrice  }){
+function Controls({ onOpenCart, cartItems, totalPrice }){
 
   return (
     <div className='Controls'>
@@ -18,11 +17,15 @@ function Controls({ onOpenCart, cartItems, totalPrice  }){
 }
 
 Controls.propTypes = {
-  onOpenCart: PropTypes.func
+  onOpenCart: PropTypes.func,
+  cartItems: PropTypes.array,
+  totalPrice: PropTypes.number
 };
 
 Controls.defaultProps = {
-  onOpenCart: () => {}
+  onOpenCart: () => {},
+  cartItems: [],
+  totalPrice: 0
 }
 
 export default React.memo(Controls);

@@ -11,10 +11,13 @@
   display: flex;
   gap: 15px;
   margin-right: 20px;
+  font-style: normal;
+  line-height: 21px;
+  font-size: 18px;
 }
 
 .bold-text {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .Controls-button {
